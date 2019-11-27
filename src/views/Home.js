@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import Menu from "../components/Menu"
 
 type TypeProps = {|
   i18n: any,
@@ -15,6 +16,7 @@ class Home extends React.Component<TypeProps, TypeState> {
     return (
       <div>
         HELLO
+        <Menu />
       </div>
     );
   }
