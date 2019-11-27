@@ -24,6 +24,7 @@ class Home extends React.Component<TypeProps, TypeState> {
 export { Home };
 export default connect(
     state => ({
+        films:state.films.films
     }),
     dispatch => ({
     })
