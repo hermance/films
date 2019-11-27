@@ -1,5 +1,9 @@
 {
   "home": {
     "title": "Films"
+  },
+  "error":{
+    "message": "Oops an error occured.",
+    "restart": "Back"
   }
 }
