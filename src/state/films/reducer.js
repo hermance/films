@@ -19,7 +19,7 @@ const reducer = (state: TypeState = initialState, action: TypeAction) => {
         case ActionType.GET_FILMS:
             return {
                 ...initialState,
-                films:action.payload.films``
+                films:action.value.films
             }
         default:
             return state;
