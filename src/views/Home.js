@@ -15,8 +15,8 @@ class Home extends React.Component<TypeProps, TypeState> {
 
     return (
       <div>
-        HELLO
         <Menu />
+
       </div>
     );
   }

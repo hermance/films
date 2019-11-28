@@ -1,14 +1,13 @@
 // @flow
 
 import { ActionType } from "../../constants/ActionType";
-import { TypeFilm } from "../../constants/TypeFilm";
 
 type TypeAction = {|
     type: string,
     value: any,
 |};
 type TypeState = {|
-    films:TypeFilm[]
+    films:[]
 |};
 
 const initialState = {
