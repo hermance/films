@@ -1,23 +1,18 @@
 import React from "react";
 
 type TypeProps = {|
-    i18n: any,
-    history: any
+    i18n: any
 |};
 type TypeState = {||};
 
-class Welcome extends React.Component<TypeProps, TypeState> {
-
-    render() {
-        const { i18n} = this.props;
+export default function  Welcome (props: TypeProps){
 
         return (
             <div>
-                {i18n.t("home.welcomeTitle")}
-                {i18n.t("home.welcomeContent")}
+                {props.i18n.t("home.welcomeTitle")}
+                {props.i18n.t("home.welcomeContent")}
 
             </div>
         );
-    }
+
 }
-export default{ Welcome };
