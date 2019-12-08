@@ -13,14 +13,18 @@ type TypeState = {||};
 
 class Home extends React.Component<TypeProps, TypeState> {
 
+    componentWillMount(){
+        this.props.fetchFilms();
+    }
+
   render() {
-    const { i18n} = this.props;
+    const { i18n, films } = this.props;
 
     return (
       <div>
         <Menu />
         <Welcome i18n={i18n}/>
-          <Films i18n={i18n}/>
+          <Films i18n={i18n} films={films}/>
       </div>
     );
   }
@@ -31,6 +35,6 @@ export default connect(
         films:state.films.films
     }),
     dispatch => ({
-        fetchFilms: () => dispatch(actions.films.fetchFilms()),
+        fetchFilms: () => dispatch(actions.films.fetchLatestFilms()),
     })
 )(Home);

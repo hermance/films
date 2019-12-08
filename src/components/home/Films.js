@@ -1,4 +1,5 @@
 import React from "react";
+import Film from "./Film"
 
 type TypeProps = {|
     i18n: any,
@@ -7,9 +8,11 @@ type TypeProps = {|
 type TypeState = {||};
 
 export default function  Films (props: TypeProps){
-
         return (
             <div>
+                {
+                    props.films && props.films.map(film =><Film key={film.id} film={film}/>)
+                }
             </div>
         );
 
