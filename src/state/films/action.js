@@ -8,10 +8,23 @@ const action = {
         api.getJSON("https://api.themoviedb.org/3/discover/movie?api_key="+config.apiKey).then(res => {
             if (res.status === 200) {
                 res.json().then(json => {
-                    console.log(json.results)
                     dispatch({
                         type: ActionType.GET_FILMS,
                         value: json.results,
+                    });
+                })
+
+            }
+        })
+
+    },
+    fetchFilmById: (id:string) => (dispatch: any) => {
+        api.getJSON("https://api.themoviedb.org/3/movie/"+id+"?api_key="+config.apiKey).then(res => {
+            if (res.status === 200) {
+                res.json().then(json => {
+                    dispatch({
+                        type: ActionType.GET_FILM,
+                        value: json,
                     });
                 })
 

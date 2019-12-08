@@ -21,6 +21,11 @@ const reducer = (state: TypeState = initialState, action: TypeAction) => {
                 ...initialState,
                 films:action.value
             }
+        case ActionType.GET_FILM:
+            return {
+                ...initialState,
+                film:action.value
+            }
         default:
             return state;
     }
