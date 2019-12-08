@@ -18,13 +18,13 @@ class Home extends React.Component<TypeProps, TypeState> {
     }
 
   render() {
-    const { i18n, films } = this.props;
+    const { i18n, films, history } = this.props;
 
     return (
       <div>
         <Menu />
         <Welcome i18n={i18n}/>
-          <Films i18n={i18n} films={films}/>
+          <Films i18n={i18n} films={films} history={history}/>
       </div>
     );
   }
