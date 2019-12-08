@@ -9,7 +9,7 @@ type TypeState = {||};
 
 export default function  Films (props: TypeProps){
         return (
-            <div>
+            <div className="films">
                 {
                     props.films && props.films.map(film =><Film key={film.id} film={film}/>)
                 }

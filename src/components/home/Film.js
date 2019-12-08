@@ -8,7 +8,7 @@ type TypeState = {||};
 
 export default function  Film (props: TypeProps){
         return (
-            <div>
+            <div className="film">
                 {props.film.title}
             </div>
         );
