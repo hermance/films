@@ -1,4 +1,5 @@
 import React from "react";
+import Menu from "../components/Menu"
 
 type TypeProps = {|
     i18n: any,
@@ -22,6 +23,7 @@ class FilmDetails extends React.Component<TypeProps, TypeState> {
 
         return (
             <div>
+                <Menu />
                 {film && film.title}
             </div>
         );
