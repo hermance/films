@@ -7,6 +7,7 @@ type TypeAction = {|
     value: any,
 |};
 type TypeState = {|
+    films:[]
 |};
 
 const initialState = {
@@ -16,8 +17,15 @@ const initialState = {
 const reducer = (state: TypeState = initialState, action: TypeAction) => {
     switch (action.type) {
         case ActionType.GET_FILMS:
-            //todo
-            return state;
+            return {
+                ...initialState,
+                films:action.value
+            }
+        case ActionType.GET_FILM:
+            return {
+                ...initialState,
+                film:action.value
+            }
         default:
             return state;
     }

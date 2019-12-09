@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.film{
+  padding:20px;
+  background-color: blanchedalmond;
+  margin: 20px;
+}
+.films{
+  width:40%;
+  margin:auto;
+}

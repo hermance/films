@@ -4,7 +4,7 @@ export const ServiceStatus = {
   checkStatus: (res: any) => {
     if (res.status !== 200) {
       console.log("res", res);
-      location.href = "/erreur";
+      window.location.href = "/erreur";
     }
   },
 };
@@ -42,7 +42,7 @@ const api = {
         "Content-Type": "application/json",
         // Accept: "application/json",
         // "X-XSRF-TOKEN": token,
-        Authorization: AUTH_TYPE + " " + getToken(),
+        // Authorization: AUTH_TYPE + " " + getToken(),
       },
       body: JSONbody,
     }).then(res => {
@@ -57,7 +57,7 @@ const api = {
       headers: {
         Accept: "application/json",
         // "X-XSRF-TOKEN": token,
-        Authorization: AUTH_TYPE + " " + getToken(),
+        // Authorization: AUTH_TYPE + " " + getToken(),
       },
     }).then(res => {
       ServiceStatus.checkStatus(res);

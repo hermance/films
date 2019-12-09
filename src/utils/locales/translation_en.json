@@ -1,6 +1,7 @@
 {
   "home": {
-    "title": "Films"
+    "welcomeTitle": "Welcome on Films",
+    "welcomeContent": "You'll find here all your favourite movies ! "
   },
   "error":{
     "message": "Oops an error occured.",

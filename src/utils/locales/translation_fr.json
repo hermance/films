@@ -1,6 +1,7 @@
 {
   "home": {
-    "title": "Films"
+    "welcomeTitle": "Bienvenue sur Films",
+    "welcomeContent": "Vous retrouverez dans cette interface tous vos films préférés ! "
   },
   "error":{
     "message": "Oups une erreur est survenue.",
