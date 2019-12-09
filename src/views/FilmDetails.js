@@ -4,15 +4,18 @@ import {connect} from "react-redux"
 import actions from "../state/actions"
 import Film from "../components/home/Film"
 import { GridList } from '@material-ui/core';
+import Rating from 'react-rating';
 
 type TypeProps = {|
     i18n: any,
     history: any,
     film:any,
+    rates:any[],
     wishList:any[],
     recommendations:any[],
     fetchFilmById:Function,
     addToWishList:Function,
+    rateFilm:Function,
     removeFromWishList:Function
 |};
 type TypeState = {||};
@@ -58,8 +61,9 @@ class FilmDetails extends React.Component<TypeProps, TypeState> {
 
     render() {
         const film = this.props.location.film ? this.props.location.film : this.props.film
-        const {i18n, wishList} = this.props
+        const {i18n, wishList, rateFilm, rates} = this.props
         const isInWishList = !!wishList.find(f => f.id === film.id)
+        const initialRating = film && rates ? rates.find(rate => rate.filmId === film.id) : null
         return (
             <div>
                 <Menu />
@@ -73,6 +77,12 @@ class FilmDetails extends React.Component<TypeProps, TypeState> {
                                     {isInWishList ? i18n.t("filmDetails.removeToWishList"): i18n.t("filmDetails.addToWishList")}
                                 </button>
                             </div>
+                            <Rating
+                                initialRating={initialRating? initialRating.rate : 0}
+                                onChange={(value)=>{
+                                    rateFilm(value, film.id)
+                                }}
+                            />
                             {this.renderRecommendations()}
                         </div>)
                 }
@@ -86,12 +96,14 @@ export default connect(
     state => ({
         film:state.films.film,
         wishList:state.films.wishList,
-        recommendations:state.films.recommendations
+        recommendations:state.films.recommendations,
+        rates:state.films.rates
     }),
     dispatch => ({
         addToWishList: (film) => dispatch(actions.films.addToWishList(film)),
         removeFromWishList: (film) => dispatch(actions.films.removeFromWishList(film)),
         fetchFilmById: (id:string) => dispatch(actions.films.fetchFilmById(id)),
         fetchRecommendations: (id:string) => dispatch(actions.films.fetchRecommendations(id)),
+        rateFilm: (rate:number, filmId:number) => dispatch(actions.films.rateFilm(rate, filmId)),
     })
 )(FilmDetails)
