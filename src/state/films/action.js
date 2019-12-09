@@ -4,6 +4,16 @@ import api from "../../utils/api";
 import {config} from "../../config"
 
 const action = {
+    rateFilm: (rate:number, filmId:number) => (dispatch: any) => {
+        dispatch({
+            type: ActionType.RATE_FILM,
+            value: {
+                rate,
+                filmId
+            },
+        });
+
+    },
     addToWishList: (film) => (dispatch: any) => {
         dispatch({
             type: ActionType.ADD_TO_WISHLIST,

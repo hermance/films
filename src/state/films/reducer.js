@@ -9,13 +9,15 @@ type TypeAction = {|
 type TypeState = {|
     films:[],
     recommendations:[],
-    wishList:[]
+    wishList:[],
+    rates:[]
 |};
 
 const initialState = {
     films:[],
     recommendations:[],
-    wishList:[]
+    wishList:[],
+    rates:[]
 };
 
 const reducer = (state: TypeState = initialState, action: TypeAction) => {
@@ -34,6 +36,18 @@ const reducer = (state: TypeState = initialState, action: TypeAction) => {
             return {
                 ...state,
                 recommendations:action.value
+            }
+        case ActionType.RATE_FILM:
+            const rates = [...state.rates]
+            const idx = rates.map(item => item.filmId).indexOf(action.value.filmId)
+            if(idx !== -1){
+                rates[idx] = action.value
+            }else{
+                rates.push(action.value)
+            }
+            return {
+                ...state,
+                rates:rates
             }
         case ActionType.ADD_TO_WISHLIST:
             return {
