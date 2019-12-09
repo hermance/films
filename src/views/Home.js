@@ -24,7 +24,7 @@ class Home extends React.Component<TypeProps, TypeState> {
       <div>
         <Menu />
         <Welcome i18n={i18n}/>
-          <Films i18n={i18n} films={films} history={history}/>
+        <Films i18n={i18n} films={films} history={history}/>
       </div>
     );
   }

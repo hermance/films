@@ -3,6 +3,9 @@
     "welcomeTitle": "Bienvenue sur Films",
     "welcomeContent": "Vous retrouverez dans cette interface tous vos films préférés ! "
   },
+  "filmDetails":{
+    "recommendation":"Recommandations : "
+  },
   "error":{
     "message": "Oups une erreur est survenue.",
     "restart": "Retour"

@@ -7,24 +7,31 @@ type TypeAction = {|
     value: any,
 |};
 type TypeState = {|
-    films:[]
+    films:[],
+    recommendations:[]
 |};
 
 const initialState = {
-
+    films:[],
+    recommendations:[]
 };
 
 const reducer = (state: TypeState = initialState, action: TypeAction) => {
     switch (action.type) {
         case ActionType.GET_FILMS:
             return {
-                ...initialState,
+                ...state,
                 films:action.value
             }
         case ActionType.GET_FILM:
             return {
-                ...initialState,
+                ...state,
                 film:action.value
+            }
+        case ActionType.GET_RECOMANDATIONS:
+            return {
+                ...state,
+                recommendations:action.value
             }
         default:
             return state;

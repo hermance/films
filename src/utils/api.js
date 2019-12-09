@@ -4,7 +4,7 @@ export const ServiceStatus = {
   checkStatus: (res: any) => {
     if (res.status !== 200) {
       console.log("res", res);
-      window.location.href = "/erreur";
+      //window.location.href = "/erreur";
     }
   },
 };

@@ -8,9 +8,13 @@ type TypeState = {||};
 export default function  Welcome (props: TypeProps){
 
         return (
-            <div>
+            <div className="col">
+                <h1>
                 {props.i18n.t("home.welcomeTitle")}
+                </h1>
+                <h2>
                 {props.i18n.t("home.welcomeContent")}
+                </h2>
 
             </div>
         );
