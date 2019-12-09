@@ -47,11 +47,12 @@ class FilmDetails extends React.Component<TypeProps, TypeState> {
     }
 
     addOrRemoveFromWishList = (isInWishList:boolean) => {
-        const {film, removeFromWishList, addToWishList} = this.props
+        const {film, removeFromWishList, addToWishList, location} = this.props
+        const currentFilm = location.film ? location.film : film
         if(isInWishList){
-            removeFromWishList(film)
+            removeFromWishList(currentFilm)
         }else{
-            addToWishList(film)
+            addToWishList(currentFilm)
         }
     }
 
