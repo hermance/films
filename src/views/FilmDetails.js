@@ -40,7 +40,7 @@ class FilmDetails extends React.Component<TypeProps, TypeState> {
             return (
                 <div className="margin-auto">
                     {i18n.t("filmDetails.recommendation")}
-                    <GridList cellHeight={160} cols={3}>
+                    <GridList cellHeight="auto" cols={3} className="justify">
                         {recommendations && recommendations.map(recommendation => <Film  fromDetails={true} history={history} film={recommendation} key={recommendation.id}/>)}
                     </GridList>
                 </div>
