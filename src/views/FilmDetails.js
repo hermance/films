@@ -29,13 +29,13 @@ class FilmDetails extends React.Component<TypeProps, TypeState> {
     }
 
     renderRecommendations () {
-        const {recommendations, i18n} = this.props;
+        const {recommendations, i18n, history} = this.props;
         if(recommendations){
             return (
                 <div>
                     {i18n.t("filmDetails.recommendation")}
                     <GridList cellHeight={160} cols={3}>
-                        {recommendations && recommendations.map(recommendation => <Film film={recommendation} key={recommendation.id}/>)}
+                        {recommendations && recommendations.map(recommendation => <Film  fromDetails={true} history={history} film={recommendation} key={recommendation.id}/>)}
                     </GridList>
                 </div>
             )
