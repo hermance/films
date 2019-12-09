@@ -35,17 +35,20 @@ const reducer = (state: TypeState = initialState, action: TypeAction) => {
                 ...state,
                 recommendations:action.value
             }
-        case ActionType.ADD_IN_WISHLIST:
+        case ActionType.ADD_TO_WISHLIST:
             return {
                 ...state,
                 wishList : [... state.wishList, action.value]
             }
         case ActionType.REMOVE_FROM_WISHLIST:
             const wishList = state.wishList
-            wishList.remove(action.value) // todo a checker
+            const index = wishList.indexOf(action.value);
+            if (index > -1) {
+                wishList.splice(index, 1);
+            }
             return {
                 ...state,
-                wishList : wishList
+                wishList : [...wishList]
             }
         default:
             return state;

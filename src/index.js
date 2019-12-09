@@ -16,7 +16,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const persistConfig = {
     key: "root",
     storage,
-    whitelist: [],
+    whitelist: ["films"]
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

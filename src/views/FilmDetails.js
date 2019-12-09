@@ -11,7 +11,9 @@ type TypeProps = {|
     film:any,
     wishList:any[],
     recommendations:any[],
-    fetchFilmById:Function
+    fetchFilmById:Function,
+    addToWishList:Function,
+    removeFromWishList:Function
 |};
 type TypeState = {||};
 
@@ -33,7 +35,7 @@ class FilmDetails extends React.Component<TypeProps, TypeState> {
         const {recommendations, i18n, history} = this.props;
         if(recommendations){
             return (
-                <div>
+                <div className="margin-auto">
                     {i18n.t("filmDetails.recommendation")}
                     <GridList cellHeight={160} cols={3}>
                         {recommendations && recommendations.map(recommendation => <Film  fromDetails={true} history={history} film={recommendation} key={recommendation.id}/>)}
@@ -45,7 +47,12 @@ class FilmDetails extends React.Component<TypeProps, TypeState> {
     }
 
     addOrRemoveFromWishList = (isInWishList:boolean) => {
-
+        const {film, removeFromWishList, addToWishList} = this.props
+        if(isInWishList){
+            removeFromWishList(film)
+        }else{
+            addToWishList(film)
+        }
     }
 
     render() {
@@ -81,6 +88,8 @@ export default connect(
         recommendations:state.films.recommendations
     }),
     dispatch => ({
+        addToWishList: (film) => dispatch(actions.films.addToWishList(film)),
+        removeFromWishList: (film) => dispatch(actions.films.removeFromWishList(film)),
         fetchFilmById: (id:string) => dispatch(actions.films.fetchFilmById(id)),
         fetchRecommendations: (id:string) => dispatch(actions.films.fetchRecommendations(id)),
     })
