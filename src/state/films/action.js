@@ -1,13 +1,81 @@
 // @flow
 import { ActionType } from "../../constants/ActionType";
+import api from "../../utils/api";
+import {config} from "../../config"
 
 const action = {
-    getFilms: () => (dispatch: any) => {
-        //todo api.post / get => fetch data
-       /* dispatch({
-            type: ActionType.GET_FILMS,
-            films
-        });*/
+    rateFilm: (rate:number, filmId:number) => (dispatch: any) => {
+        dispatch({
+            type: ActionType.RATE_FILM,
+            value: {
+                rate,
+                filmId
+            },
+        });
+
+    },
+    addToWishList: (film) => (dispatch: any) => {
+        dispatch({
+            type: ActionType.ADD_TO_WISHLIST,
+            value: film,
+        });
+
+    },
+    removeFromWishList: (film) => (dispatch: any) => {
+        dispatch({
+            type: ActionType.REMOVE_FROM_WISHLIST,
+            value: film,
+        });
+
+    },
+    fetchLatestFilms: () => (dispatch: any) => {
+        api.getJSON("https://api.themoviedb.org/3/discover/movie?api_key="+config.apiKey).then(res => {
+            if (res.status === 200) {
+                res.json().then(json => {
+                    dispatch({
+                        type: ActionType.GET_FILMS,
+                        value: json.results,
+                    });
+                })
+
+            }
+        })
+
+    },
+    orderFilms: (films:any[]) => (dispatch: any) => {
+        dispatch({
+            type: ActionType.ORDER_FILMS,
+            value: films,
+        });
+
+    },
+    fetchRecommendations: (id:string) => (dispatch: any) => {
+        api.getJSON("https://api.themoviedb.org/3/movie/"+id+"/recommendations?api_key="+config.apiKey).then(res => {
+            if (res.status === 200) {
+                res.json().then(json => {
+                    dispatch({
+                        type: ActionType.GET_RECOMANDATIONS,
+                        value: json.results,
+                    });
+                })
+
+            }
+        })
+
+    },
+    fetchFilmById: (id:string) => (dispatch: any) => {
+        api.getJSON("https://api.themoviedb.org/3/movie/"+id+"?api_key="+config.apiKey).then(res => {
+            if (res.status === 200) {
+                res.json().then(json => {
+                    dispatch({
+                        type: ActionType.GET_FILM,
+                        value: json,
+                    });
+                })
+
+            }
+        })
+
     },
 
 };

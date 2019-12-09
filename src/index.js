@@ -10,12 +10,13 @@ import { applyMiddleware, compose, createStore } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./state/reducers";
 import storage from "redux-persist/lib/storage";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const persistConfig = {
     key: "root",
     storage,
-    whitelist: [],
+    whitelist: ["films"]
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -5,12 +5,16 @@ import i18n from "./utils/i18n";
 import { connect } from "react-redux";
 import Error from "./views/Error";
 import Home from "./views/Home";
+import FilmDetails from "./views/FilmDetails"
+import WishList from "./views/WishList"
 
 function App() {
   return (
     <div className="App">
       <Switch>
           <Route exact path={"/"} component={i18n.wrap(Home)} />
+          <Route exact path={"/wishList"} component={i18n.wrap(WishList)} />
+          <Route exact path={"/details/:id"} component={i18n.wrap(FilmDetails)} />
           <Route exact path={"/error"} component={i18n.wrap(Error)} />
       </Switch>
     </div>
