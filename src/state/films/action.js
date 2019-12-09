@@ -18,6 +18,20 @@ const action = {
         })
 
     },
+    fetchRecommendations: (id:string) => (dispatch: any) => {
+        api.getJSON("https://api.themoviedb.org/3/movie/"+id+"/recommendations?api_key="+config.apiKey).then(res => {
+            if (res.status === 200) {
+                res.json().then(json => {
+                    dispatch({
+                        type: ActionType.GET_RECOMANDATIONS,
+                        value: json.results,
+                    });
+                })
+
+            }
+        })
+
+    },
     fetchFilmById: (id:string) => (dispatch: any) => {
         api.getJSON("https://api.themoviedb.org/3/movie/"+id+"?api_key="+config.apiKey).then(res => {
             if (res.status === 200) {
