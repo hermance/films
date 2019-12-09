@@ -4,7 +4,12 @@
     "welcomeContent": "Vous retrouverez dans cette interface tous vos films préférés ! "
   },
   "filmDetails":{
-    "recommendation":"Recommandations : "
+    "recommendation":"Recommandations : ",
+    "removeToWishList":"Retirer de la Wish List",
+    "addToWishList":"Ajouter à la Wish List"
+  },
+  "wishList":{
+    "title":"Votre Wish List"
   },
   "error":{
     "message": "Oups une erreur est survenue.",

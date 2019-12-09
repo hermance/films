@@ -13,6 +13,10 @@ export default function Menu(props: TypeProps) {
         {
             to:"/",
             label:"Home"
+        },
+        {
+            to:"/wishList",
+            label:"Wish List"
         }
     ]
     return (

@@ -4,6 +4,20 @@ import api from "../../utils/api";
 import {config} from "../../config"
 
 const action = {
+    addToWishList: (film) => (dispatch: any) => {
+        dispatch({
+            type: ActionType.ADD_TO_WISHLIST,
+            value: film,
+        });
+
+    },
+    removeFromWishList: (film) => (dispatch: any) => {
+        dispatch({
+            type: ActionType.REMOVE_FROM_WISHLIST,
+            value: film,
+        });
+
+    },
     fetchLatestFilms: () => (dispatch: any) => {
         api.getJSON("https://api.themoviedb.org/3/discover/movie?api_key="+config.apiKey).then(res => {
             if (res.status === 200) {

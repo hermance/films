@@ -9,8 +9,11 @@ type TypeProps = {|
     i18n: any,
     history: any,
     film:any,
+    wishList:any[],
     recommendations:any[],
-    fetchFilmById:Function
+    fetchFilmById:Function,
+    addToWishList:Function,
+    removeFromWishList:Function
 |};
 type TypeState = {||};
 
@@ -32,7 +35,7 @@ class FilmDetails extends React.Component<TypeProps, TypeState> {
         const {recommendations, i18n, history} = this.props;
         if(recommendations){
             return (
-                <div>
+                <div className="margin-auto">
                     {i18n.t("filmDetails.recommendation")}
                     <GridList cellHeight={160} cols={3}>
                         {recommendations && recommendations.map(recommendation => <Film  fromDetails={true} history={history} film={recommendation} key={recommendation.id}/>)}
@@ -43,9 +46,20 @@ class FilmDetails extends React.Component<TypeProps, TypeState> {
 
     }
 
+    addOrRemoveFromWishList = (isInWishList:boolean) => {
+        const {film, removeFromWishList, addToWishList, location} = this.props
+        const currentFilm = location.film ? location.film : film
+        if(isInWishList){
+            removeFromWishList(currentFilm)
+        }else{
+            addToWishList(currentFilm)
+        }
+    }
+
     render() {
         const film = this.props.location.film ? this.props.location.film : this.props.film
-
+        const {i18n, wishList} = this.props
+        const isInWishList = !!wishList.find(f => f.id === film.id)
         return (
             <div>
                 <Menu />
@@ -54,6 +68,11 @@ class FilmDetails extends React.Component<TypeProps, TypeState> {
                         <div className="col">
                             <div>{film.title}</div>
                             <img src={"https://image.tmdb.org/t/p/w500/"+film.poster_path} height="300"/>
+                            <div className="margin-top margin-bottom">
+                                <button onClick={()=>this.addOrRemoveFromWishList(isInWishList)} className={isInWishList ? "btn btn-danger": "btn btn-primary"} type="button">
+                                    {isInWishList ? i18n.t("filmDetails.removeToWishList"): i18n.t("filmDetails.addToWishList")}
+                                </button>
+                            </div>
                             {this.renderRecommendations()}
                         </div>)
                 }
@@ -66,9 +85,12 @@ export {FilmDetails};
 export default connect(
     state => ({
         film:state.films.film,
+        wishList:state.films.wishList,
         recommendations:state.films.recommendations
     }),
     dispatch => ({
+        addToWishList: (film) => dispatch(actions.films.addToWishList(film)),
+        removeFromWishList: (film) => dispatch(actions.films.removeFromWishList(film)),
         fetchFilmById: (id:string) => dispatch(actions.films.fetchFilmById(id)),
         fetchRecommendations: (id:string) => dispatch(actions.films.fetchRecommendations(id)),
     })
