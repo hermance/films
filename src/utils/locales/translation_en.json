@@ -4,7 +4,9 @@
     "welcomeContent": "You'll find here all your favourite movies ! "
   },
   "filmDetails":{
-    "recommendation":"Recommendations : "
+    "recommendation":"Recommendations : ",
+    "removeToWishList":"Remove from Wish List",
+    "addToWishList":"Add to Wish List"
   },
   "error":{
     "message": "Oops an error occured.",

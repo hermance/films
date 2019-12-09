@@ -9,6 +9,7 @@ type TypeProps = {|
     i18n: any,
     history: any,
     film:any,
+    wishList:any[],
     recommendations:any[],
     fetchFilmById:Function
 |};
@@ -43,9 +44,14 @@ class FilmDetails extends React.Component<TypeProps, TypeState> {
 
     }
 
+    addOrRemoveFromWishList = (isInWishList:boolean) => {
+
+    }
+
     render() {
         const film = this.props.location.film ? this.props.location.film : this.props.film
-
+        const {i18n, wishList} = this.props
+        const isInWishList = !!wishList.find(f => f.id === film.id)
         return (
             <div>
                 <Menu />
@@ -54,6 +60,11 @@ class FilmDetails extends React.Component<TypeProps, TypeState> {
                         <div className="col">
                             <div>{film.title}</div>
                             <img src={"https://image.tmdb.org/t/p/w500/"+film.poster_path} height="300"/>
+                            <div className="margin-top margin-bottom">
+                                <button onClick={()=>this.addOrRemoveFromWishList(isInWishList)} className={isInWishList ? "btn btn-danger": "btn btn-primary"} type="button">
+                                    {isInWishList ? i18n.t("filmDetails.removeToWishList"): i18n.t("filmDetails.addToWishList")}
+                                </button>
+                            </div>
                             {this.renderRecommendations()}
                         </div>)
                 }
@@ -66,6 +77,7 @@ export {FilmDetails};
 export default connect(
     state => ({
         film:state.films.film,
+        wishList:state.films.wishList,
         recommendations:state.films.recommendations
     }),
     dispatch => ({
