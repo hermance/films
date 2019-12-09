@@ -24,7 +24,7 @@ class WishList extends React.Component<TypeProps, TypeState> {
                 <Menu />
                 <div className="margin-auto">
                     <h1>{i18n.t("wishList.title")}</h1>
-                    <GridList cellHeight={160} cols={3}>
+                    <GridList cellHeight="auto" cols={3} className="justify">
                         {wishList && wishList.map(film => <Film  history={history} film={film} key={film.id}/>)}
                     </GridList>
                 </div>
