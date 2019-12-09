@@ -1,7 +1,9 @@
 {
   "home": {
     "welcomeTitle": "Welcome on Films",
-    "welcomeContent": "You'll find here all your favourite movies ! "
+    "welcomeContent": "You'll find here all your favourite movies ! ",
+    "orderAsc": "Order by date (old)",
+    "orderDesc": "Order by date (new)"
   },
   "filmDetails":{
     "recommendation":"Recommendations : ",

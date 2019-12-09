@@ -42,6 +42,13 @@ const action = {
         })
 
     },
+    orderFilms: (films:any[]) => (dispatch: any) => {
+        dispatch({
+            type: ActionType.ORDER_FILMS,
+            value: films,
+        });
+
+    },
     fetchRecommendations: (id:string) => (dispatch: any) => {
         api.getJSON("https://api.themoviedb.org/3/movie/"+id+"/recommendations?api_key="+config.apiKey).then(res => {
             if (res.status === 200) {

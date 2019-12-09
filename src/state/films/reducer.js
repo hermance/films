@@ -10,6 +10,7 @@ type TypeState = {|
     films:[],
     recommendations:[],
     wishList:[],
+    isDesc:boolean,
     rates:[]
 |};
 
@@ -17,7 +18,8 @@ const initialState = {
     films:[],
     recommendations:[],
     wishList:[],
-    rates:[]
+    rates:[],
+    isDesc:true
 };
 
 const reducer = (state: TypeState = initialState, action: TypeAction) => {
@@ -26,6 +28,12 @@ const reducer = (state: TypeState = initialState, action: TypeAction) => {
             return {
                 ...state,
                 films:action.value
+            }
+        case ActionType.ORDER_FILMS:
+            return {
+                ...state,
+                films:action.value,
+                isDesc:!state.isDesc
             }
         case ActionType.GET_FILM:
             return {
