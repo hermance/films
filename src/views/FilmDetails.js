@@ -27,7 +27,14 @@ class FilmDetails extends React.Component<TypeProps, TypeState> {
         return (
             <div>
                 <Menu />
-                {film && film.title}
+                {
+                    film && (
+                        <div className="col">
+                            <div>{film.title}</div>
+                            <img src={"https://image.tmdb.org/t/p/w500/"+film.poster_path} height="300"/>
+                        </div>)
+                }
+
             </div>
         );
     }
