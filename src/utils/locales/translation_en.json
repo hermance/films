@@ -8,6 +8,9 @@
     "removeToWishList":"Remove from Wish List",
     "addToWishList":"Add to Wish List"
   },
+  "wishList":{
+    "title":"Your Wish List"
+  },
   "error":{
     "message": "Oops an error occured.",
     "restart": "Back"

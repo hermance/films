@@ -8742,7 +8742,7 @@ react-router-dom@4.3.1:
 
 react-router@4.3.1, react-router@^4.3.1:
   version "4.3.1"
-  resolved "http://npm.cardiweb.com/repository/npm/react-router/-/react-router-4.3.1.tgz#aada4aef14c809cb2e686b05cee4742234506c4e"
+  resolved "https://npm.coreoz.com/repository/npm-group/react-router/-/react-router-4.3.1.tgz#aada4aef14c809cb2e686b05cee4742234506c4e"
   dependencies:
     history "^4.7.2"
     hoist-non-react-statics "^2.5.0"

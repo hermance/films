@@ -8,6 +8,9 @@
     "removeToWishList":"Retirer de la Wish List",
     "addToWishList":"Ajouter à la Wish List"
   },
+  "wishList":{
+    "title":"Votre Wish List"
+  },
   "error":{
     "message": "Oups une erreur est survenue.",
     "restart": "Retour"
