@@ -20,10 +20,10 @@ export default function Menu(props: TypeProps) {
         }
     ]
     return (
-        <div className="row">
+        <div className="row menu">
             {menu &&
             menu.map((item: TypeItem, index) => (
-                <div className="col-12 col-md-6 m-b-2" key={index}>
+                <div className="col-12 col-md-6 m-b-2 menu-item" key={index}>
                     <Link className={"btn btn-nav "} to={item.to}>
                         {item.label}
                     </Link>

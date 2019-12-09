@@ -20,7 +20,16 @@ code {
   width:40%;
   margin:auto;
 }
-
+.menu-item:hover{
+  background-color: #e8d5ba;
+}
+.menu{
+  background-color: blanchedalmond;
+  margin-bottom:30px;
+}
+.justify{
+  justify-content: center;
+}
 .margin-top{
   margin-top:20px;
 }
